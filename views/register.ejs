@@ -1,0 +1,11 @@
+<%- include('./layout.ejs') %>
+
+<% if (message) { %>
+	<h3 class="mt-4 ml-2"> <%= message %> </h3>
+<% } %>
+
+<form method="POST" action="">
+	<center class="mt-4">username: <input name="username" type="text"></center> 	
+	<center class="mt-4">password: <input name="password" type="password"></center>
+	<center class="mt-4"><input type="submit" value="Submit"></center>	
+</form>

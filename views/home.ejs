@@ -1,0 +1,35 @@
+<%- include('./layout.ejs') %>
+
+<% if (logged) { %>
+    <div class="container">
+        <h2 class="text-center mt-5"> Activity log of <%= username %> </h2>
+        <% if (topic.length > 0) { %>
+            <% for (let t of topic) { %>
+                <div class="card text-center">
+                        <div class="card-header">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                You commented: <b><%= t.desc %></b> 
+                            </p>
+                            <p>
+                                <b>Topic:</b> <%= t.topic %>
+                            </p>
+                            <p>
+                                <%= t.time %>
+                            </p>
+                            <a class="btn btn-secondary" href='/topic/<%=t.slug%>'>
+                                Visit Thread
+                            </a>
+                        </div>
+                </div>
+            <% } %>
+        <% } else { %>
+            <h4> Sorry you have no recent activity log. </h4>
+        <% } %>
+    </div>
+<% } else { %>
+    <a href="/login"><center><button class="btn btn-outline-dark mt-4" type="button">Login</button></center>  </a>
+    <a href="/register"><center><button class="btn btn-outline-dark mt-4" type="button">Register</button></center></a>
+<% } %>
+

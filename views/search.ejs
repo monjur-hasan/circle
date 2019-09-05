@@ -1,0 +1,24 @@
+<%- include('./layout.ejs') %>
+<% if (logged) { %>
+    <div class="container">
+        <h5 class="text-center mt-5">Top search results for "<%= txt %>"</h5>
+        <% if (topic.length > 0) { %>
+            <% for (let t of topic) { %>
+                <div class="card">
+                        <div class="card-header">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"><%= t.title%></h4>
+                            <p class="card-text"><%= t.desc%> </p>
+                            <a class="btn btn-secondary" href='/topic/<%=t.slug%>'>
+                                Visit Thread
+                            </a>
+                        </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+<% } else { %>
+    <a href="/login"><center><button class="btn btn-outline-dark mt-4" type="button">Login</button></center>  </a>
+    <a href="/register"><center><button class="btn btn-outline-dark mt-4" type="button">Register</button></center></a>
+<% } %>

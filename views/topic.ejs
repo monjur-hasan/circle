@@ -1,0 +1,43 @@
+<%- include('./layout.ejs') %>
+<% if (logged) { %>
+    <div class="container">
+        <br>
+        <p class="text-center"> <h2><%= topic.title%></h2>  </p>
+        <p class="text-center"> <h4>Moderator: <%= topic.user %> </h4></p>
+        <p class="text-center"><h6><%= topic.desc %> </h6> </p>
+
+        <div class="d-flex justify-content-center row-hl">
+                <div class="p-4 item-hl">
+                        <div class="card" style="width: 20rem;">
+                                <div class="card-body">
+                                    <p class="font-weight-bold text-center"> Add a new comment </p>
+                                        <form action="/new-comment" method="POST" id="form-filter">
+                                            Comment
+                                            <input type="text" class="item-hl mt-1 ml-1" name="comment"> <br>
+                                            <input type="hidden" name="id" value=<%=topic.slug %>>
+                                            <input class="item-hl mt-2" type="submit" value="Submit"> <br>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <% if (topic.comments.length > 0) { %>
+            <% for (let comment of topic.comments) { %>
+                <div class="card text-center">
+                        <div class="card-header">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"> <%= comment.user %> </h4>
+                            <p class="card-text"> <%= comment.desc %> </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                                <%= comment.time %>
+                        </div>
+                </div>
+                <br>
+            <% } %>
+        <% } %>
+    </div>
+<% } else { %>
+    <a href="/login"> <center><button class="btn btn-outline-dark mt-4" type="button"> Please login to view this topic </button></center> </a>
+<% } %>

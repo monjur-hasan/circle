@@ -1,0 +1,10 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: rgb(2, 13, 19);
+  list-style: none;
+  text-decoration: none;
+}
